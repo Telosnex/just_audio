@@ -125,7 +125,7 @@ class Html5AudioPlayer extends JustAudioPlayer {
         }.toJS);
     _audioElement.addEventListener(
         'ended',
-        (JSAny event) async {
+        (JSAny event) {
           _currentAudioSourcePlayer?.complete();
         }.toJS);
     _audioElement.addEventListener(
