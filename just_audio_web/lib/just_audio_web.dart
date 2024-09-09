@@ -114,50 +114,50 @@ class Html5AudioPlayer extends JustAudioPlayer {
   Html5AudioPlayer({required String id}) : super(id: id) {
     _audioElement.addEventListener(
         'durationchange',
-        (event) {
+        (JSAny event) {
           _durationCompleter?.complete();
           broadcastPlaybackEvent();
         }.toJS);
     _audioElement.addEventListener(
         'error',
-        (event) {
+        (JSAny event) {
           _durationCompleter?.completeError(_audioElement.error!);
         }.toJS);
     _audioElement.addEventListener(
         'ended',
-        (event) async {
+        (JSAny event) async {
           _currentAudioSourcePlayer?.complete();
         }.toJS);
     _audioElement.addEventListener(
         'timeupdate',
-        (event) {
+        (JSAny event) {
           _currentAudioSourcePlayer
               ?.timeUpdated(_audioElement.currentTime.toDouble());
         }.toJS);
     _audioElement.addEventListener(
         'loadstart',
-        (event) {
+        (JSAny event) {
           transition(ProcessingStateMessage.buffering);
         }.toJS);
     _audioElement.addEventListener(
         'waiting',
-        (event) {
+        (JSAny event) {
           transition(ProcessingStateMessage.buffering);
         }.toJS);
     _audioElement.addEventListener(
         'stalled',
-        (event) {
+        (JSAny event) {
           transition(ProcessingStateMessage.buffering);
         }.toJS);
     _audioElement.addEventListener(
         'canplaythrough',
-        (event) {
+        (JSAny event) {
           _audioElement.playbackRate = _speed;
           transition(ProcessingStateMessage.ready);
         }.toJS);
     _audioElement.addEventListener(
         'progress',
-        (event) {
+        (JSAny event) {
           broadcastPlaybackEvent();
         }.toJS);
   }
